@@ -1,6 +1,7 @@
 const app = new Vue({
     el: `#app`,
     data: {
+        currentIndex: 0,
         images: [
             {
                 src: 'img/01.jpg',
@@ -28,5 +29,21 @@ const app = new Vue({
                 text: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
             },
         ],
-    }
+    },
+    methods: {
+        nextThumb() {
+            if (this.currentIndex == this.images.length - 1) {
+                this.currentIndex = 0
+            } else {
+                this.currentIndex++
+            }
+        },
+        prevThumb() {
+            if (this.currentIndex == 0) {
+                this.currentIndex = 4
+            } else {
+                this.currentIndex--
+            }
+        }
+    },
 })
