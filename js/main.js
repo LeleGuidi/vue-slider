@@ -1,6 +1,7 @@
 const app = new Vue({
     el: `#app`,
     data: {
+        timer: 0,
         currentIndex: 0,
         images: [
             {
@@ -31,19 +32,33 @@ const app = new Vue({
         ],
     },
     methods: {
-        nextThumb() {
+        nextThumb() 
+        {
             if (this.currentIndex == this.images.length - 1) {
                 this.currentIndex = 0
             } else {
                 this.currentIndex++
             }
         },
-        prevThumb() {
+        prevThumb() 
+        {
             if (this.currentIndex == 0) {
                 this.currentIndex = 4
             } else {
                 this.currentIndex--
             }
-        }
+        },
+        autoPlay() 
+        {
+            let app = this;
+            this.timer = setInterval(function() 
+            {
+                app.nextThumb();
+            }, 3000);
+        },
+    },
+    created() 
+    {
+        this.autoPlay();
     },
 })
