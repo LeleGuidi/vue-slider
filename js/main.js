@@ -1,6 +1,7 @@
 const app = new Vue({
     el: `#app`,
     data: {
+        isPaused: false,
         timer: 0,
         currentIndex: 0,
         images: [
@@ -51,13 +52,19 @@ const app = new Vue({
         autoPlay() 
         {
             let app = this;
-            this.timer = setInterval(function() 
+            setInterval(function() 
             {
-                app.nextThumb();
+                if(!app.isPaused) {
+                    app.timer++
+                    app.nextThumb();
+                }
             }, 3000);
         },
+        // pause() {
+        //     this.isPaused = true;
+        // },
     },
-    created() 
+    mounted() 
     {
         this.autoPlay();
     },
