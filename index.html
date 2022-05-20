@@ -23,8 +23,8 @@
         <div class="thumbs">
             <div class="prev" @click="prevThumb()"></div>
 
-            <div class="thumb active" v-for="elm in images">
-                <img :src="elm.src" alt="elm.title">
+            <div class="thumb" v-for="(elm, i) in images" :class="(images[currentIndex].src == images[i].src) ? 'active' : 'null'">
+                <img :src="elm.src" :alt="elm.title">
             </div> 
             
             
